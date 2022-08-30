@@ -34,7 +34,7 @@ class Card():
     #カード番号とマークを文字列として出力(__repr__特殊メソッドをオーバーライド)
     def __repr__(self):
         return self.values[self.value] + " of " + self.suits[self.suit]
-
+"""
 card1 = Card(10, 1)
 card2 = Card(13, 3)
 print(card1)
@@ -45,3 +45,4 @@ print(card1 < card2)
 #⇒card1.__lt__(card2)
 print(card1 > card2)
 #⇒card1.__gt__(card2)
+"""
