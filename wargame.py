@@ -3,6 +3,7 @@
 # Wargame(戦争)
 from random import shuffle
 
+#カード
 class Card():
     #カード基本情報(クラス変数)
     suits = ["spades", "hearts", "diamonds", "culbs"]
