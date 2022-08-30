@@ -46,3 +46,31 @@ print(card1 < card2)
 print(card1 > card2)
 #⇒card1.__gt__(card2)
 """
+
+#カード
+class Deck():
+    #カードデッキの入れ物を作成(クラス変数)
+    card_deck = []
+
+    #５２枚のカードデッキを作成(インスタンスオブジェクトを作成)
+    def __init__(self):
+        for i in range(2, 15):
+            for j in range(4):
+                self.card_deck.append(Card(i, j))
+        shuffle(self.card_deck)
+    
+    #デッキ内のカード枚数を判定して１枚以上の場合は１枚減らして、そのカードの番号とマークを取得
+    def draw(self):
+        if len(self.card_deck) == 0:
+            return None
+        else:
+            return self.card_deck.pop()
+"""
+deck = Deck()
+for card in deck.card_deck:
+    print(card)
+print(len(deck.card_deck))
+card = deck.draw()
+print(card)
+print(len(deck.card_deck))
+"""
