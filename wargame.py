@@ -87,3 +87,59 @@ class Player():
 player1 = Player("Yuto")
 print(player1.wins, player1.card, player1.name)
 """
+
+#ゲーム
+class Game():
+    #カードデッキとプレイヤー基本情報を作成(インスタンスオブジェクトを作成)
+    def __init__(self):
+        self.deck = Deck()
+        name1 = input("Enter player1's name: ")
+        name2 = input("Enter player2's name: ")
+        self.player1 = Player(name1)
+        self.player2 = Player(name2)
+    
+    #ラウンド毎の勝利プレイヤーを表示(入力値にコンポジションを利用)
+    def print_winner(self, winner):
+        print("The winner of this round is {}!!".format(winner.name))
+    
+    #プレイヤーの手札を表示(入力値にコンポジションを利用)
+    def print_draw(self, player1, player2):
+        print("{}'s card is {}, {}'s card is {}!!".format(player1.name, player1.card, player2.name, player2.card))
+    
+    #ラウンドの勝利回数から勝利プライヤーを決定(入力値にコンポジションを利用)
+    def game_winner(self, player1, player2):
+        if player1.wins > player2.wins:
+            print("The winner is {}!".format(player1.name))
+        elif player1.wins < player2.wins:
+            print("The winner is {}!!".format(player2.name))
+        else:
+            print("This game is draw!!")
+    
+    #ゲームを制御
+    def play_game(self):
+        #カードデッキを用意
+        player_deck = self.deck.card_deck
+        print("Let's play wargame!!")
+
+        #ゲームの開始終了を制御(whileループを使用)
+        while len(player_deck) >= 1:
+            request = input("Enter q to quit, another to continue: ")
+            if  request == "q":
+                break
+            #プレイヤーの手札と名前を表示
+            self.player1.card = self.deck.draw()
+            self.player2.card = self.deck.draw()
+            self.print_draw(self.player1, self.player2)
+            #ラウンド毎の勝利プレイヤーを表示
+            if self.player1.card > self.player2.card:
+                self.player1.wins += 1
+                self.print_winner(self.player1)
+            else:
+                self.player2.wins += 1
+                self.print_winner(self.player2)
+        
+        #ゲーム勝利プレイヤーを表示
+        self.game_winner(self.player1, self.player2)
+
+game = Game()
+game.play_game()
