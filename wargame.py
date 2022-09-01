@@ -48,7 +48,7 @@ print(card1 > card2)
 #⇒card1.__gt__(card2)
 """
 
-#カード
+#デッキ
 class Deck():
     #カードデッキの入れ物を作成(クラス変数)
     card_deck = []
@@ -74,4 +74,16 @@ print(len(deck.card_deck))
 card = deck.draw()
 print(card)
 print(len(deck.card_deck))
+"""
+
+#プレイヤー
+class Player():
+    #プレイヤー初期情報を作成(インスタンスオブジェクトを作成)
+    def __init__(self, name):
+        self.wins = 0
+        self.card = None
+        self.name = name
+"""
+player1 = Player("Yuto")
+print(player1.wins, player1.card, player1.name)
 """
